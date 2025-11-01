@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bn">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>CRUD - Users</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <div>
+                    <h1>CRUD: Users - Simple But Advanced</h1>
+                    <p class="lead muted">Local- First Demo. No backend. Uses Localstorage. Export, Search, Sort, Pagination, Edit in Modal </p>
+                </div>
+                <div class="controls">
+                    <button class="btn ghost" id="exportCsv">Export CSV</button>
+                    <button class="btn ghost" id="alearAll">Clear All</button>
+                </div>
+            </header>
+
+            <section class="card">
+                <form id="itemForm" class="grid" autocomplete="off">
+                    <input type="text" id="name" placeholder="Name" required/>
+                    <input type="email" id="email" placeholder="Email" required/>
+                    <select id="role">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                        <option value="guest">Guest</option>
+                    </select>
+                    <div style="display: flex;gap: 8px;">
+                        <button class="btn" id="addBtn" type="submit">Add</button>
+                        <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+                    </div>
+                </form>
+
+                <div class="toolbar">
+                    <div class="search">
+                        <input id="search" placeholder="Search Name or Email" />
+                        <select id="perPage" class="ghost">
+                            <option value="5">5 /page</option>
+                            <option value="10">10 /page</option>
+                            <option value="20">20 /page</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-left: auto;display: flex;gap: 8px;align-items: center;">
+                        <label class="muted">Sort</label>
+                        <select id="sortBy">
+                            <option value="createdAt:desc">Newest</option>
+                            <option value="createdAt:asc">Oldest</option>
+                            <option value="name:asc">Name A => Z</option>
+                            <option value="name:desc">Name Z => A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table aria-live="polite">
+                        <thead>
+                            <tr>
+                                <th style="width: 34px;"><input type="checkbox" id="selectAll" /></th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Created</th>
+                                <th style="width: 172px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="list"></tbody>
+                    </table>
+                </div>
+
+                <div class="footer-row">
+                    <div class="muted"><span id="count">0</span> items</div>
+                    <div style="display: flex;gap: 8px;align-items: center;">
+                        <button class="btn ghost" id="bulkDelete">Delete Select</button>
+                        <div class="muted">Page <span id="page">1</span></div>
+                        <button class="btn ghost small" id="prev">Prev</button>
+                        <button class="btn ghost small" id="next">Next</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--modal-->
+        <div class="modal-backdrop" id="modalBackdrop">
+            <div class="modal" role="dialog" aria-modal="true">
+                <h3 id="modalTitle">Edit Item</h3>
+                <form id="editForm" class="grid" style="margin-top: 8px;">
+                    <input type="text" id="editName" placeholder="Name" required>
+                    <input type="email" id="editEmail" placeholder="Email" required>
+                    <select id="editRole">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                        <option value="guest">Guest</option>
+                    </select>
+                    <div style="display: flex;gap: 8px;">
+                        <button class="btn" id="saveEdit" type="submit">Save</button>
+                        <button class="btn ghost" id="cancelEdit" type="button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
