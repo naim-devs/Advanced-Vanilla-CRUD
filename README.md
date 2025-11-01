@@ -1,11 +1,10 @@
-# 🚀 Advanced Frontend CRUD Application
+# 🚀 Advanced CRUD Application
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 A lightweight, high-performance, and feature-rich CRUD (Create, Read, Update, Delete) user management interface. This project is built entirely with vanilla JavaScript, HTML, and CSS, and it leverages **LocalStorage** for data persistence, making it a powerful serverless demo.
-
 
 
 ---
@@ -45,11 +44,11 @@ This project requires no build steps or dependencies. You can run it directly in
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/your-repository-name.git
+    git clone https://github.com/naim-devs/crud.git
     ```
 2.  **Navigate to the project directory:**
     ```sh
-    cd your-repository-name
+    cd crud
     ```
 3.  **Open the `index.html` file in your browser:**
     *   You can simply double-click the file, or right-click and choose "Open with" your preferred browser.
@@ -78,7 +77,7 @@ This project requires no build steps or dependencies. You can run it directly in
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/your-username/your-repository-name/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/naim-devs/crud/issues).
 
 ---
 
