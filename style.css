@@ -382,4 +382,5 @@ tbody .btn.small.danger:hover {
 
 @media (max-width: 500px) {
     form.grid { grid-template-columns: 1fr; }
-}```
+}
+
