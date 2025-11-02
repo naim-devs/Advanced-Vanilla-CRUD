@@ -1,25 +1,41 @@
 <!DOCTYPE html>
-<html lang="bn">
+<!-- 'lang="en"' sets the primary language of the document, which is good for accessibility and search engines. -->
+<html lang="en">
     <head>
+        <!-- Basic metadata required for any webpage -->
         <meta charset="utf-8"/>
+        <!-- This meta tag is crucial for making the website responsive. It tells the browser how to control the page's dimensions and scaling. -->
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <!-- The title of the page, which appears in the browser tab. -->
         <title>CRUD - Users</title>
+
+        <!-- This links our external stylesheet where all the design rules are. -->
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+
+        <!-- A simple container to center our content on the page and provide consistent padding. -->
         <div class="wrap">
+
+            <!-- The header section contains the main title and global action buttons. -->
             <header>
                 <div>
-                    <h1>CRUD: Users - Simple But Advanced</h1>
-                    <p class="lead muted">Local- First Demo. No backend. Uses Localstorage. Export, Search, Sort, Pagination, Edit in Modal </p>
+                    <h1>Advanced CRUD Application</h1>
+                    <p class="lead muted">A simple yet powerful CRUD app for practicing JavaScript and LocalStorage.</p>
                 </div>
                 <div class="controls">
+                    <!-- These buttons have IDs so our JavaScript can easily find them and add functionality. -->
                     <button class="btn ghost" id="exportCsv">Export CSV</button>
                     <button class="btn ghost" id="alearAll">Clear All</button>
                 </div>
             </header>
 
+            <!-- This 'card' holds the main application interface. -->
             <section class="card">
+
+                <!-- 1. ADD USER FORM -->
+                <!-- This form is used to create new users. 'autocomplete="off"' prevents browser suggestions. -->
                 <form id="itemForm" class="grid" autocomplete="off">
                     <input type="text" id="name" placeholder="Name" required/>
                     <input type="email" id="email" placeholder="Email" required/>
@@ -28,37 +44,49 @@
                         <option value="admin">Admin</option>
                         <option value="guest">Guest</option>
                     </select>
+                    <!-- A simple container for the form buttons to align them correctly. -->
                     <div style="display: flex;gap: 8px;">
                         <button class="btn" id="addBtn" type="submit">Add</button>
                         <button class="btn ghost" id="resetBtn" type="button">Reset</button>
                     </div>
                 </form>
 
+                <!-- 2. TOOLBAR: SEARCH AND SORT CONTROLS -->
+                <!-- This section contains controls to filter and organize the data shown in the table. -->
                 <div class="toolbar">
                     <div class="search">
+                        <!-- The search input. JavaScript will listen for typing here to filter the results. -->
                         <input id="search" placeholder="Search Name or Email" />
+                        <!-- This dropdown controls how many items are shown per page. -->
                         <select id="perPage" class="ghost">
-                            <option value="5">5 /page</option>
-                            <option value="10">10 /page</option>
-                            <option value="20">20 /page</option>
+                            <option value="5">5 per page</option>
+                            <option value="10">10 per page</option>
+                            <option value="20">20 per page</option>
                         </select>
                     </div>
-
+                    
+                    <!-- This container holds the sorting options. The inline style pushes it to the right. -->
                     <div style="margin-left: auto;display: flex;gap: 8px;align-items: center;">
                         <label class="muted">Sort</label>
+                        <!-- This dropdown allows users to sort the data by date or name. -->
                         <select id="sortBy">
                             <option value="createdAt:desc">Newest</option>
                             <option value="createdAt:asc">Oldest</option>
-                            <option value="name:asc">Name A => Z</option>
-                            <option value="name:desc">Name Z => A</option>
+                            <option value="name:asc">Name A-Z</option>
+                            <option value="name:desc">Name Z-A</option>
                         </select>
                     </div>
                 </div>
 
+                <!-- 3. DATA TABLE -->
+                <!-- The core of our display. This table will be populated with user data from JavaScript. -->
                 <div class="table-wrap">
+                    <!-- 'aria-live="polite"' is an accessibility feature. It tells screen readers to announce updates to the table politely. -->
                     <table aria-live="polite">
+                        <!-- Table Headers: Defines what each column represents. -->
                         <thead>
                             <tr>
+                                <!-- The checkbox in the header is for selecting all items on the current page. -->
                                 <th style="width: 34px;"><input type="checkbox" id="selectAll" /></th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -67,12 +95,18 @@
                                 <th style="width: 172px;">Actions</th>
                             </tr>
                         </thead>
+                        <!-- Table Body: IMPORTANT! This is intentionally left empty. Our 'script.js' file will dynamically create and insert the user rows here. -->
                         <tbody id="list"></tbody>
                     </table>
                 </div>
 
+                <!-- 4. TABLE FOOTER AND PAGINATION -->
+                <!-- This section shows the total item count and provides pagination controls. -->
                 <div class="footer-row">
+                    <!-- The item count will be updated by JavaScript. -->
                     <div class="muted"><span id="count">0</span> items</div>
+                    
+                    <!-- Container for bulk actions and page navigation buttons. -->
                     <div style="display: flex;gap: 8px;align-items: center;">
                         <button class="btn ghost" id="bulkDelete">Delete Select</button>
                         <div class="muted">Page <span id="page">1</span></div>
@@ -83,10 +117,13 @@
             </section>
         </div>
 
-        <!--modal-->
+        <!-- 5. EDIT USER MODAL -->
+        <!-- This entire section is hidden by default with CSS and shown by JavaScript when a user clicks 'Edit'. -->
         <div class="modal-backdrop" id="modalBackdrop">
+            <!-- The modal dialog itself. 'role="dialog"' and 'aria-modal="true"' are for accessibility, telling screen readers this is a focused dialog. -->
             <div class="modal" role="dialog" aria-modal="true">
                 <h3 id="modalTitle">Edit Item</h3>
+                <!-- This form is similar to the 'Add User' form but will be pre-filled with the user's data for editing. -->
                 <form id="editForm" class="grid" style="margin-top: 8px;">
                     <input type="text" id="editName" placeholder="Name" required>
                     <input type="email" id="editEmail" placeholder="Email" required>
@@ -103,6 +140,8 @@
             </div>
         </div>
 
+        <!-- This is where the magic happens! We link our JavaScript file at the end of the body
+             so that the HTML content loads first, preventing potential errors. -->
         <script src="script.js"></script>
     </body>
 </html>
